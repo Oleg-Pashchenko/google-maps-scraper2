@@ -25,6 +25,7 @@ async def cmd_start(message: types.Message):
 async def cmd_start(message: types.Message):
     await message.answer("Идет поиск... Это займет определенное время.")
     answer = execute_query(message.text)
+    await message.answer('Result:')
     doc = InputFile('answer.xlsx')
     await message.reply_document(doc)
 
