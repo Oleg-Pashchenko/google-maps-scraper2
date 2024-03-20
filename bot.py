@@ -5,7 +5,7 @@ import asyncio
 import logging
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters.command import Command
-from aiogram.types import InputFile
+from aiogram.types.input_file import FSInputFile
 
 from main import search, execute_query
 
@@ -24,9 +24,9 @@ async def cmd_start(message: types.Message):
 @dp.message()
 async def cmd_start(message: types.Message):
     await message.answer("Идет поиск... Это займет определенное время.")
-    answer = execute_query(message.text)
+    execute_query(message.text)
     await message.answer('Result:')
-    doc = InputFile('answer.xlsx')
+    doc = FSInputFile('answer.xlsx')
     await message.reply_document(doc)
 
 
